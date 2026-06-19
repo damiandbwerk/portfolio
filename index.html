@@ -67,14 +67,14 @@
 
   .eyebrow{
     font-family: var(--mono);
-    font-size: 12.5px;
-    letter-spacing: 0.12em;
+    font-size: 17px;
+    letter-spacing: 0.1em;
     color: var(--rust);
-    display:flex; align-items:center; gap:10px;
+    display:flex; align-items:center; gap:12px;
   }
   .eyebrow .tc{ color: var(--ink-soft); }
   .eyebrow::before{
-    content:""; width:7px; height:7px; border-radius:50%;
+    content:""; width:9px; height:9px; border-radius:50%;
     background: var(--rust); flex-shrink:0;
   }
 
@@ -358,67 +358,31 @@
   /* ============ CONTACT ============ */
   .contact{ padding: 96px 0; background: var(--bg-alt); border-top:1px solid var(--line); }
   .contact-grid{
-    display:grid;
-    grid-template-columns: minmax(260px, 380px) 1fr;
-    gap: 56px;
+    max-width: 560px;
+    margin: 20px auto 0;
   }
   .contact-info h2{ font-size: clamp(28px,4vw,40px); font-weight:600; margin-bottom: 18px; }
-  .contact-info p{ color: var(--ink-soft); max-width: 380px; }
-  .call-sheet{ margin-top: 32px; border-top: 1px solid var(--line); }
+  .contact-info p{ color: var(--ink-soft); max-width: 460px; }
+  .call-sheet{ margin-top: 40px; border-top: 1px solid var(--line); }
   .call-row{
-    display:flex; justify-content:space-between; align-items:flex-start; gap: 12px;
-    padding: 16px 0; border-bottom: 1px solid var(--line);
-    font-family: var(--mono); font-size: 13.5px;
+    display:flex; justify-content:space-between; align-items:baseline; gap: 16px;
+    padding: 24px 0; border-bottom: 1px solid var(--line);
+    font-family: var(--mono);
   }
-  .call-row span:first-child{ color: var(--steel); letter-spacing:0.06em; flex-shrink:0; }
+  .call-row span:first-child{
+    color: var(--steel); letter-spacing:0.08em; flex-shrink:0;
+    font-size: 12px; text-transform: uppercase;
+  }
   .call-row a{
     min-width: 0;
     text-align: right;
     word-break: break-word;
     overflow-wrap: anywhere;
+    font-size: 19px;
+    color: var(--ink);
+    font-weight: 500;
   }
   .call-row a:hover, .call-row a:focus-visible{ color: var(--rust); }
-
-  form.contact-form{
-    background: var(--paper);
-    border: 1px solid var(--ink);
-    padding: 36px;
-  }
-  .form-row{ margin-bottom: 24px; }
-  .form-row label{
-    display:block; font-family: var(--mono); font-size: 11.5px;
-    letter-spacing: 0.1em; color: var(--steel); margin-bottom: 8px;
-    text-transform: uppercase;
-  }
-  .form-row input,
-  .form-row select,
-  .form-row textarea{
-    width:100%;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid var(--line);
-    padding: 10px 2px;
-    font-family: var(--body);
-    font-size: 15.5px;
-    color: var(--ink);
-  }
-  .form-row textarea{ resize: vertical; min-height: 96px; }
-  .form-row input:focus, .form-row select:focus, .form-row textarea:focus{
-    outline:none; border-bottom-color: var(--rust);
-  }
-  .two-col{ display:grid; grid-template-columns: 1fr 1fr; gap: 20px 24px; }
-
-  .submit-btn{
-    width:100%;
-    text-align:center;
-    background: var(--ink); color: var(--paper);
-    border: none;
-    padding: 16px 20px;
-    font-family: var(--mono); font-size: 13.5px; letter-spacing: 0.08em;
-    cursor: pointer;
-    transition: background 0.2s ease;
-  }
-  .submit-btn:hover, .submit-btn:focus-visible{ background: var(--rust); }
 
   /* ============ FOOTER ============ */
   footer{
@@ -431,7 +395,7 @@
 
   /* ============ RESPONSIVE ============ */
   @media (max-width: 880px){
-    .about-grid, .contact-grid{ grid-template-columns: 1fr; }
+    .about-grid{ grid-template-columns: 1fr; }
     .about-frame{ max-width: 320px; }
     .gallery{ grid-template-columns: repeat(2, 1fr); }
     .gear-grid{ grid-template-columns: repeat(2, 1fr); }
@@ -459,7 +423,6 @@
   @media (max-width: 460px){
     .wrap{ padding: 0 20px; }
     .nav-inner{ padding: 14px 20px; }
-    form.contact-form{ padding: 24px; }
   }
 </style>
 </head>
@@ -533,7 +496,7 @@
           <p class="eyebrow"><span class="tc">00:02</span> — SELECTED WORK</p>
         </div>
         <p style="font-family:var(--mono); font-size:13px; color:var(--ink-soft); max-width:280px;">
-          A mix of lighting, camera, and editing jobs from the last few years. Full reels available on request.
+          Full reels available on request.
         </p>
       </div>
     </div>
@@ -686,8 +649,8 @@
         <div class="contact-info">
           <h2>Feel free to contact me via email.</h2>
           <p>
-            (calling beforehand is always faster)
-            Send over a brief summary of the project, the desired dates and the location.
+            Calling beforehand is always faster. Otherwise, send a brief summary
+            of the project, the desired dates, and the location.
           </p>
           <dl class="call-sheet">
             <div class="call-row"><span>Email</span><a href="mailto:Damiandbwerk@gmail.com">Damiandbwerk@gmail.com</a></div>
@@ -695,34 +658,6 @@
             <div class="call-row"><span>Vimeo</span><a href="#">vimeo.com/user35449572</a></div>
           </dl>
         </div>
-
-        <form class="contact-form" action="mailto:damian@damiandbwerk.nl" method="post" enctype="text/plain">
-          <div class="two-col">
-            <div class="form-row">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" required autocomplete="name">
-            </div>
-            <div class="form-row">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required autocomplete="email">
-            </div>
-          </div>
-          <div class="form-row">
-            <label for="project">Project type</label>
-            <select id="project" name="project">
-              <option value="lighting">Lighting / Gaffing</option>
-              <option value="camera">Camera / DP</option>
-              <option value="edit">Editing</option>
-              <option value="full">Full production</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" required placeholder="Dates, location, and what you need on the day."></textarea>
-          </div>
-          <button type="submit" class="submit-btn">SEND MESSAGE</button>
-        </form>
 
       </div>
     </div>
